@@ -35,7 +35,7 @@ try:
     while running:
 
         link_elements = driver.find_elements(By.CLASS_NAME, "sc-1dzblrg-0.fEqilq.sc-1os65za-2.jhoVRR")
-        
+        print(link_elements)
         for link_element in link_elements:
             # driver.execute_script("arguments[0].scrollIntoView(true);", link_element)  # Scroll to the element
             driver.execute_script("var element = arguments[0];var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);var elementTop = element.getBoundingClientRect().top;window.scrollBy(0, elementTop - (viewPortHeight / 2));", link_element)
@@ -65,8 +65,8 @@ try:
         else: 
             driver.execute_script("var element = arguments[0];var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);var elementTop = element.getBoundingClientRect().top;window.scrollBy(0, elementTop - (viewPortHeight / 2));", next_buttons[0])
             next_buttons[0].click()
-except:
-    pass
+except Exception as e:
+    print(e)
 
 df.to_csv("resume_data.csv", index=False)
 
