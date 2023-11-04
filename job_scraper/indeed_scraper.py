@@ -37,7 +37,9 @@ try:
             link_element.click()
             time.sleep(0.5) 
 
-            job_title_element = driver.find_element(By.CLASS_NAME, "icl-u-xs-mb--xs.icl-u-xs-mt--none.jobsearch-JobInfoHeader-title.is-embedded")
+            
+            job_title_element = driver.find_element(By.CLASS_NAME, "jobsearch-JobInfoHeader-title-container")
+            # job_title_element = driver.find_element(By.CLASS_NAME, "icl-u-xs-mb--xs.icl-u-xs-mt--none.jobsearch-JobInfoHeader-title.is-embedded")
             job_info["title"] = job_title_element.text
 
             job_description_element = driver.find_element(By.ID, "jobDescriptionText")
@@ -49,15 +51,20 @@ try:
                     print(list_item.text)
                     req_list.append(list_item.text)
             job_info["reqs"] = req_list
+            job_info["link"] = driver.current_url
             aggregate_job_info.append(job_info)
 
-        # next_buttons = driver.find_elements(By.CLASS_NAME, "e8ju0x50")
-        # if(len(next_buttons) == 6):
-        #     running = False
-        # else:
-        #     next_buttons[len(next_buttons)-2].click()
-except:
-   pass
+        next_buttons = driver.find_elements(By.CLASS_NAME, "e8ju0x50")
+        if(len(next_buttons) == 6):
+            running = False
+        else:
+            next_buttons[len(next_buttons)-2].click()
+except Exception as e:
+    print(f"An exception occurred: {e}")
+
+
+if 'driver' in locals():
+    driver.quit()
 
 with open("aggregate_job_info.json", "w") as f:
     json.dump(aggregate_job_info, f)
