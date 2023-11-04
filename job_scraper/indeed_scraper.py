@@ -19,7 +19,7 @@ try:
     service = Service(driver_path)
     driver = webdriver.Chrome(service=service)
 
-    driver.get(r"https://www.indeed.com/jobs?q=data+science+internship&start=110&pp=gQClAAABiS3ZE3IAAAACCW0yDAAZAQATGktWR-z-gBIl3tZnH8Uv--FtKRLxTAAA") 
+    driver.get(r"https://www.indeed.com/jobs?q=computer+science+internship&start=90&pp=gQAPAAAAAAAAAAAAAAACFjq7MgAqAQAIDFM_StAtKUnkYv0UY6MkuMvhXH8rBs1KaUeq58G4VwL8sAAcULK8AAA&vjk=6cb6793d38e2cf21") 
 
     # aggregate_job_info = []
 
