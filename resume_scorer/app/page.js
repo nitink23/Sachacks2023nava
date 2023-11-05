@@ -8,6 +8,21 @@ import { ChevronsDown } from 'lucide-react';
 
 
 export default function Home() {
+
+  const [jo, setJo] = useState({ })
+  const [jtw, setJtw] = useState({ })
+  const [jth, setJth] = useState({ })
+
+  function getJob(min, max) {
+    // Use Math.random() to generate a random number between 0 (inclusive) and 1 (exclusive)
+    const random = Math.random();
+  
+    // Scale the random number to the desired range
+    const randomNumber = Math.floor(random * (max - min + 1)) + min;
+  
+    return randomNumber;
+  }
+
   const [resultsActive, setResultsActive] = useState(
     {
       count:0,
@@ -19,6 +34,19 @@ export default function Home() {
     if (resultsActive.active) {
       // Scroll to the results section when resultsActive becomes true
       document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+      
+      setJo({
+        job_num: getJob(1,50),
+        match: getJob(1,100)
+      })
+      setJtw({
+        job_num: getJob(1,50),
+        match: getJob(1,100)
+      })
+      setJth({
+        job_num: getJob(1,50),
+        match: getJob(1,100)
+      })
 
     }
   }, [resultsActive]);
@@ -41,9 +69,9 @@ export default function Home() {
         <section id="results" className="flex min-h-screen flex-col items-center px-24 pb-24">
           <h1 className=" font-bold font-mono text-blue-500 text-[76px] text-center mt-5">Here's What We Found!</h1>
           <div className="flex gap-5 mt-10">
-            <JobCard />
-            <JobCard />
-            <JobCard />
+            <JobCard job={jo} />
+            <JobCard job={jtw} />
+            <JobCard job={jth} />
           </div>
         </section>
       }

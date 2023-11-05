@@ -19,24 +19,6 @@ const s3 = new AWS.S3({
 const UploadComponent = ({setActive, active}) => {
 
   const [filename, setFilename] = useState("")
-  const [pdfData, setPdfData] = useState(null);
-  const [text, setText] = useState('');
-
-
-  // const extractTextFromPDF = async () => {
-  //   const pdf = await pdfjs.getDocument({ data: pdfData }).promise;
-
-  //   let allText = '';
-  //   for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-  //     const page = await pdf.getPage(pageNum);
-  //     const textContent = await page.getTextContent();
-  //     const pageText = textContent.items.map(item => item.str).join(' ');
-  //     allText += pageText + '\n';
-  //   }
-
-  //   setText(allText);
-  //   console.log("ALL TXT", allText)
-  // };
 
   
   const handleMatching = async () =>{
@@ -54,11 +36,10 @@ const UploadComponent = ({setActive, active}) => {
     if (pdf_response.ok) {
         const data = await pdf_response.json();
         if(!data.error){
-          setPdfData(data.value);
+          extractTextFromPDF(data.value)
         }
         console.log("PDF DATA", data)
     }
-
   }
 
   const handleFileUpload = async (event) => {
