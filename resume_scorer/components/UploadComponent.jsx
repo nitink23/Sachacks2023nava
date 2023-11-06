@@ -4,17 +4,11 @@ import React, { useState } from 'react';
 import { Upload } from 'lucide-react';
 import AWS from 'aws-sdk';
 
-console.log("HEY",process.env.ACCESS_KEY)
 const s3 = new AWS.S3({
-  accessKeyId: "AKIA3W6TSHHCRGDL7BO5",
-  secretAccessKey: "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",
-  region: "us-west-1",
+  accessKeyId: process.env.ACCESS_KEY,
+  secretAccessKey: process.env.SECRET_KEY,
+  region: process.env.REGION,
 });
-// const s3 = new AWS.S3({
-//   accessKeyId: process.env.ACCESS_KEY,
-//   secretAccessKey: process.env.SECRET_KEY,
-//   region: process.env.REGION,
-// });
 
 const UploadComponent = ({setActive, active}) => {
 

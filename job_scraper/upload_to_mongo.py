@@ -2,7 +2,7 @@ import pymongo
 import json
 
 # Replace these with your own MongoDB Atlas connection details
-MONGO_URI = "mongodb+srv://nava:sachacks23@cluster0.wdsjs4p.mongodb.net/?retryWrites=true&w=majority"
+MONGO_URI = ""
 DB_NAME = "nava"
 COLLECTION_NAME = "jd"
 
